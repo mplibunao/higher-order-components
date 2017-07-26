@@ -10,6 +10,12 @@ export default function(ComposedComponent){
       }
     }
 
+    componentWillUpdate(nextProps){
+      if (!nextProps.authenticated){
+        this.props.history.push('/');
+      }
+    }
+
     render(){
       const { authenticated } = this.props;
       return authenticated ? <ComposedComponent {...this.props} /> : null;
