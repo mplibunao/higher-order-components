@@ -7,6 +7,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import App from './components/app';
 import Resources from './components/resources';
 import reducers from './reducers';
+import requireAuth from './components/hoc/require_auth';
 
 const createStoreWithMiddleware = applyMiddleware()(createStore);
 
@@ -15,7 +16,7 @@ ReactDOM.render(
     <BrowserRouter>
       <div>
         <Switch>
-          <Route path="/resources" component={Resources} />
+          <Route path="/resources" component={requireAuth(Resources)} />
           <Route path="/" component={App} />
         </Switch>
       </div>
